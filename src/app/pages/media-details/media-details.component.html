@@ -1,0 +1,18 @@
+<h4>Its media-details component!</h4>
+{{media_id}}
+<div class="container">
+  <button type="button" class="btn btn-primary" [routerLink]="['/login']"><</button>
+  <img [src]="media_details.images.standard_resolution.url" class="img  ">
+  <button type="button" class="btn btn-primary" [routerLink]="['/login', media_id_prev]"><< Prev</button>
+  <button type="button" class="btn btn-primary" [routerLink]="['/login', media_id_next]">Next >></button>
+  <div class="caption">
+    <div>Caption:</div>
+    <div>{{caption}}</div>
+  </div>
+  <div class="tags">
+    <div>tags:</div>
+    <div *ngFor="let tag of tags" class="tags">
+      {{tag}}
+    </div>
+  </div>
+</div>
