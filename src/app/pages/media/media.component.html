@@ -1,0 +1,13 @@
+<div class="container">
+  <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
+  This is media component
+  <div class="media">
+    <div *ngFor="let img of user_media" class="thumbnail">
+      <img src="{{img.images.thumbnail.url}}" class="in_thumbnail" (mouseover)="img.showTooltip=true;" (mouseleave)="img.showTooltip=false;">
+      <a [routerLink]="['/login', img.id]" class="in_thumbnail">Select</a>
+      <div *ngIf="img.showTooltip"  class="tooltip">
+        {{img.caption.text}}
+      </div>
+    </div>
+  <div>
+</div>
