@@ -4,7 +4,7 @@ import { CommonModule }             from '@angular/common';
 import { Location }                 from '@angular/common';
 import { FormGroup,
          FormControl,
-         Validators }                from '@angular/forms';
+         Validators }               from '@angular/forms';
 import { UserService }              from '../../services/user.service';
 
 @Component({

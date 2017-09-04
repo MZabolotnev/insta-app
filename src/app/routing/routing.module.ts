@@ -2,9 +2,9 @@ import { NgModule }               from '@angular/core';
 import { RouterModule }           from '@angular/router';
 import { Routes }                 from '@angular/router';
 import { AppComponent }           from '../app.component';
-import { AuthorizationComponent }         from '../pages/authorization/authorization.component';
+import { AuthorizationComponent } from '../pages/authorization/authorization.component';
 import { MediaComponent }         from '../pages/media/media.component';
-import { MediaDetailsComponent }         from '../pages/media-details/media-details.component';
+import { MediaDetailsComponent }  from '../pages/media-details/media-details.component';
 
 
 
