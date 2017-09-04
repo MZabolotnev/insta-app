@@ -1,3 +1,64 @@
 .thumbnail {
-  display: inline;
+  display: inline-block;
+  border: 1px solid #C0C0C0;
+  border-radius: 7px 7px 7px 7px;
+  margin: 3px;
+  overflow:hidden;
+  background-color: #F5F5F5;
+}
+.in_thumbnail {
+  display: block;
+}
+.in_thumbnail_select {
+  color: #4682B4  ;
+  padding-left: 15px;
+}
+.tooltip {
+  opacity: 0.8;
+  margin-top: 10px;
+  height: auto;
+  width: auto;
+  border-radius: 7px 7px 7px 7px;
+  background-color: black;
+  position: absolute;
+  color: white;
+}
+.row1 {
+  font-weight: bold;
+  display: inline-block;
+  float: left;
+  height: inherit;
+  }
+.row2 {
+  height: auto;
+  width: 300px;
+  }
+.tr {
+  content: '';
+  position: absolute;
+  left: 75px; top: -10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 7.5px 10px 7.5px;
+  border-color: transparent transparent #000000 transparent;
+}
+.button {
+  background-color: #fff;
+  display: inline-block;
+  padding: 8px;
+  color: #000;
+  border: 1px solid #fff;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+}
+.button:hover,
+.button:active {
+  background-color: #fff;
+  color: #4682B4;
+}
+#logout {
+  position: absolute;
+  right: 40px;
 }

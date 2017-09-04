@@ -1,12 +1,22 @@
 <div class="container">
-  <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
-  This is media component
+  <button type="button" class="button" [routerLink]="['/']"><</button>
+  <button type="button" id="logout" class="button" (click)="logOut()">Logout</button>
+  Hello, {{user_name}}
   <div class="media">
     <div *ngFor="let img of user_media" class="thumbnail">
       <img src="{{img.images.thumbnail.url}}" class="in_thumbnail" (mouseover)="img.showTooltip=true;" (mouseleave)="img.showTooltip=false;">
-      <a [routerLink]="['/login', img.id]" class="in_thumbnail">Select</a>
+      <a [routerLink]="['/login', img.id]" class="in_thumbnail_select">Select</a>
       <div *ngIf="img.showTooltip"  class="tooltip">
-        {{img.caption.text}}
+        <div class="tr">
+        </div>
+        <table>
+          <tr>
+            <td class="row1">Likes:</td><td class="row2">{{img.likes.count}}</td>
+          </tr>
+          <tr>
+            <td class="row1">Caption:</td><td class="row2">{{img.caption.text}}</td>
+          </tr>
+        </table>
       </div>
     </div>
   <div>

@@ -1,0 +1,29 @@
+.container {
+  display: block;
+  height: inherit;
+  width: inherit;
+  margin-top: 5%;
+  margin-left: 40%;
+}
+.button {
+  margin-left: 5px;
+  display: inline-block;
+  width: 180px;
+  // margin: auto;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #fff;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+}
+.button:hover,
+.button:active {
+  background-color: #fff;
+  color: #4682B4;
+}
+.logo {
+  position: fixed;
+  display: inline-block;
+  width: 20px;
+}
