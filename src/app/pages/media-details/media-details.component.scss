@@ -1,4 +1,5 @@
 .container {
+  font-family: Calibri;
   width: 640px;
 }
 .img {
@@ -35,7 +36,10 @@
   height: 100%;
 }
 .button {
-  background-color: #fff;
+  border-radius: 3px;
+  font-family: Calibri;
+  font-size: 15px;
+  background-color: transparent;
   padding: 8px;
   color: #000;
   border: 1px solid #fff;
@@ -45,7 +49,7 @@
 }
 .button:hover,
 .button:active {
-  background-color: #fff;
+  background-color: transparent;
   color: #4682B4;
 }
 #logout {
@@ -57,4 +61,4 @@
   display: inline-block;
   float: left;
   height: inherit;
-  }
+}
