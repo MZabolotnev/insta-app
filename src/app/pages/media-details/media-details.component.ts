@@ -2,6 +2,7 @@ import { Component, Output }                  from '@angular/core';
 import { ActivatedRoute, Router }             from '@angular/router';
 import { CommonModule, Location }             from '@angular/common';
 import { UserService }                        from '../../services/user.service';
+import { NgTemplateOutlet } from '@angular/common'
 
 @Component({
   selector: 'media-details',
@@ -14,8 +15,11 @@ export class MediaDetailsComponent {
   media_id_next: number;
   media_id_prev: number;
   media_details: object;
+  image: string;
+  video: string;
+  carousel_arr: Array<string>;
+  carousel_img: string;
   caption: string;
-  tags: Array<string>;
   media_arr: Array<number>;
 
   private subscription: any;
@@ -34,7 +38,7 @@ export class MediaDetailsComponent {
         } else {
           this.userService.getUserMedia().subscribe(
             (response) => {
-              this.media_arr =  response.data.map((num) => {
+              this.media_arr = response.data.map((num) => {
                 return num.id;
               });
               if (this.media_id !== this.media_arr[this.media_arr.length - 1] && this.media_id !== this.media_arr[0]) {
@@ -54,16 +58,40 @@ export class MediaDetailsComponent {
           this.userService.getMediaById(this.media_id).subscribe(
             (response) => {
                this.media_details = response.data;
-                // extract tags and signature from the description string
-               let tags_string = response.data.caption.text.substring(response.data.caption.text.indexOf( "#" ));
-               let space = / /gi;
-               this.tags = tags_string.replace(space, "").split("#").slice(1);
-               this.caption = response.data.caption.text.substring(0, response.data.caption.text.indexOf( "#" ));
+               if (response.data.type === 'video') {
+                 this.video = response.data.videos.standard_resolution.url;
+               } else if (response.data.type === 'image') {
+                 if (window.screen.width > 640) {
+                   this.image = response.data.images.standard_resolution.url;
+                 } else {
+                   this.image = response.data.images.low_resolution.url;
+                 }
+               } else if (response.data.type === 'carousel') {
+                 if (window.screen.width > 640) {
+                   this.carousel_arr = response.data.carousel_media.map(res => {
+                     return res.images.standard_resolution.url;
+                   });
+                 } else {
+                   this.carousel_arr = response.data.carousel_media.map(res => {
+                     return res.images.low_resolution.url;
+                   });
+                 }
+                 this.carousel_img = this.carousel_arr[0];
+               };
+               this.caption = response.data.caption.text.substring(0, response.data.caption.text.indexOf('#'));
              },
           );
         }
       },
     );
+  }
+
+  next() {
+    this.carousel_img = this.carousel_arr[this.carousel_arr.indexOf(this.carousel_img) + 1];
+  }
+
+  prev() {
+    this.carousel_img = this.carousel_arr[this.carousel_arr.indexOf(this.carousel_img) - 1];
   }
 
   logOut() {

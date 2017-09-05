@@ -1,3 +1,7 @@
+.container {
+  font-family: Calibri;
+  font-size: 15px;
+}
 .thumbnail {
   display: inline-block;
   border: 1px solid #C0C0C0;
@@ -14,6 +18,7 @@
   padding-left: 15px;
 }
 .tooltip {
+  font-family: Calibri;
   opacity: 0.8;
   margin-top: 10px;
   height: auto;
@@ -44,6 +49,8 @@
   border-color: transparent transparent #000000 transparent;
 }
 .button {
+  font-family: Calibri;
+  font-size: 15px;
   background-color: #fff;
   display: inline-block;
   padding: 8px;

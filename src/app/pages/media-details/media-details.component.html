@@ -1,33 +1,46 @@
-<div class="container">
+<div *ngIf="this.media_details" class="container">
   <div class="button_container1">
     <button type="button" class="button" [routerLink]="['/login']"><</button>
     <button type="button" id="logout" class="button" (click)="logOut()">Logout</button>
   </div>
-  <img  [src]="media_details.images.standard_resolution.url" class="img">
-  <div class="button_container2">
-    <button type="button" class="button" [routerLink]="['/login', media_id_prev]"><< Prev</button>
-    <button type="button" class="button" [routerLink]="['/login', media_id_next]">Next >></button>
+  <div *ngIf="this.media_details.type === 'video'">
+      <video [src]="video" type="video/mp4" width="480" height="480" controls>
+      </video>
   </div>
-  <table>
-    <tr>
-      <td class="row1">Likes:</td><td class="row2">{{media_details.likes.count}}</td>
-    </tr>
-    <tr>
-      <td class="row1">Caption:</td><td class="row2">{{caption}}</td>
-    </tr>
-    <tr>
-     <td class="row1">Keywords:</td><td class="row2">
-       <div *ngFor="let tag of tags" class="tags">
-         {{tag}}
-       </div>
-     </td>
-    </tr>
-    <tr>
-     <td class="row1">Users in photo:</td><td class="row2">
-       <div *ngFor="let user of media_details.users_in_photo" class="users">
-         {{user.user.full_name}}
-       </div>
-     </td>
-    </tr>
-  </table>
+  <div *ngIf="this.media_details.type === 'image'">
+      <img [src]="image" class="img">
+  </div>
+  <div *ngIf="this.media_details.type === 'carousel'">
+    <div class="button_container2">
+      <button id="prev_slide" *ngIf="this.carousel_img !== this.carousel_arr[0]" type="button" class="button" (click)="prev()"><< Prev slide</button>
+      <button id="next_slide" *ngIf="this.carousel_img !== this.carousel_arr[this.carousel_arr.length - 1]" type="button" class="button" (click)="next()">Next slide>></button>
+    </div>
+    <img [src]="carousel_img" class="img">
+  </div>
+  <div class="button_container2">
+    <button type="button" class="button" [routerLink]="['/login', media_id_prev]"><< Prev media</button>
+    <button type="button" class="button" [routerLink]="['/login', media_id_next]">Next media>></button>
+  </div>
+    <table>
+      <tr>
+        <td class="row1">Likes:</td><td class="row2">{{media_details.likes.count}}</td>
+      </tr>
+      <tr>
+        <td class="row1">Caption:</td><td class="row2">{{caption}}</td>
+      </tr>
+      <tr>
+       <td class="row1">Keywords:</td><td class="row2">
+         <div *ngFor="let tag of media_details.tags" class="tags">
+           {{tag}}
+         </div>
+       </td>
+      </tr>
+      <tr>
+       <td class="row1">Users in photo:</td><td class="row2">
+         <div *ngFor="let user of media_details.users_in_photo" class="users">
+           {{user.user.full_name}}
+         </div>
+       </td>
+      </tr>
+    </table>
 </div>
